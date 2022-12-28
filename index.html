@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework8</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      console.log(`========task1========`);
+
+      let triangle = {
+        aSide: 0,
+        bSide: 0,
+        cSide: 0,
+        setValues: function () {
+          this.aSide = +prompt("enter number a");
+          this.bSide = +prompt("enter number b");
+          this.cSide = +prompt("enter number c");
+          console.log(this.aSide, this.bSide, this.cSide);
+        },
+        getPerimeter: function () {
+          const perimetr = this.aSide + this.bSide + this.cSide;
+          console.log(perimetr);
+        },
+        isEqualSides: function () {
+          if (
+            this.aSide === this.bSide &&
+            this.cSide === this.aSide &&
+            this.bSide === this.cSide
+          ) {
+            console.log(true);
+          } else {
+            console.log(false);
+          }
+        },
+      };
+      triangle.setValues();
+      triangle.getPerimeter();
+      triangle.isEqualSides();
+
+      console.log(`========task2========`);
+      var underfined;
+      var country = {
+        name: "Ukraine",
+        language: "ukrainian",
+        capital: {
+          name: "Kyiv",
+          population: 2907817,
+          area: 847.66,
+        },
+      };
+
+      function format(start, end) {
+        console.log(start + this.name + end);
+      }
+
+      format.call(country, "", ""); // Ukraine
+      format.apply(country, ["[", "]"]); // [Ukraine]
+      format.call(country.capital, "", ""); // Kyiv
+      format.apply(country.capital, ["", ""]); // Kyiv
+      format.apply(this, [""]); // undefined
+
+      console.log(`========task3========`);
+
+      function createCalculator(x) {
+        return {
+          add: (y) => (typeof y === "number" ? (x = x + y) : NaN),
+          sub: (y) => (typeof y === "number" ? (x = x - y) : NaN),
+        };
+      }
+
+      const calculator = createCalculator(100);
+
+      console.log(calculator.add(10)); // 110
+      console.log(calculator.add(10)); // 120
+      console.log(calculator.sub(20)); // 100
+      console.log(calculator.add("qwe")); // NaN
+    </script>
+  </body>
+</html>
